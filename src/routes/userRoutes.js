@@ -1,11 +1,10 @@
 
-import express from "express";
-import userRoutes from "./routes/userRoutes.js";
+import {Router} from "express";
 
-const app = express();
+import {getHome, getAbout} from "../controllers/userController.js";
 
-app.use("/api", userRoutes);
+const router = Router()
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000/api");
-});
+router.get("/", getHome).get("/about", getAbout)
+
+export default router
