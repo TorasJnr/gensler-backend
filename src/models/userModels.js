@@ -33,4 +33,4 @@ userSchema.pre("save", async function(next) {
         this.password = hashedPassword
 })
 
-export const userModel = mongoose.model("User", userSchema)
+export const userModels = mongoose.model("User", userSchema)

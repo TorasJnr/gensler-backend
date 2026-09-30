@@ -18,7 +18,7 @@ export const authMiddleware = async (req, res, next) => {
         }
         const decodedToken= jwt.verify(token, secret)
 
-        const user = await userModel.findById
+        const user = await userModels.findById
         (decodedToken.id)
 
         if(!user) {
