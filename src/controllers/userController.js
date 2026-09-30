@@ -1,6 +1,6 @@
 
 
-import { userModel } from "../models/userModel.js"
+import { userModels } from "../models/userModels.js"
 import { signupValidate, loginValidate } from "../validator/userValidator.js"
 import bcrypt from "bcryptjs"
 import { generateToken } from "../utils/generateToken.js"
@@ -39,7 +39,7 @@ export const postUser = async  (req, res) => {
         })
     }
 
-    const existingUser = await userModel.findOne({email})
+    const existingUser = await userModels.findOne({email})
 
     if(existingUser) {
         return res.status(400).json ({
@@ -49,7 +49,7 @@ export const postUser = async  (req, res) => {
 
 
 
-    const newUser = await userModel.create({
+    const newUser = await userModels.create({
         username,
         email,
         password
@@ -88,7 +88,7 @@ export const loginUser = async  (req, res) => {
         })
     }
 
-    const existingUser = await userModel.findOne ({email})
+    const existingUser = await userModels.findOne ({email})
 
     if(!existingUser){
         return res.status (404).json({
@@ -124,7 +124,7 @@ export const loginUser = async  (req, res) => {
 export const signleUser = async (req, res) => {
     try{
         const {id} = req.params
-        const user = await userModel.findById(id).select("-password")
+        const user = await userModels.findById(id).select("-password")
 
         if(!user) {
             return res.status(404).json({
@@ -146,7 +146,7 @@ export const signleUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
     try{
         const {id} = req.params
-        const deletedUser = await userModel.findByIdAndDelete(id)
+        const deletedUser = await userModels.findByIdAndDelete(id)
 
         if(!deletedUser) {
             return res.status(404).json({
