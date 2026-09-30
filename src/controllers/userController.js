@@ -21,12 +21,6 @@ export const getAbout = (req, res) => {
 export const postUser = async  (req, res) => {
     const {username, email, password} = req.body
 
-    // if(!username && !email && !password) {
-    //     res.status(400).json({
-    //         message: "Please provide all fields"
-    //     })
-    // }
-
     const {error} = signupValidate.validate({
         username,
         email,
