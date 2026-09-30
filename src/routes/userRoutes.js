@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 import { getHome, getUser, getAbout, postUser, loginUser, signleUser, deleteUser } from "../controllers/userController.js";
-import { authMiddleware } from "../middleware/authMiddlewae.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 const router = Router()
 
 router.get("/", getHome).get("/user", getUser).get("/about", getAbout).post("/signup", postUser)
