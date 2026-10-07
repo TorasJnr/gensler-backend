@@ -20,10 +20,6 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE"],
 }))
 
-app.get("/api", (req, res) => {
-    res.json({ message: "API is working" });
-});
-
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api", userRoutes)
